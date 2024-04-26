@@ -28,3 +28,5 @@ function! FillHoles(model)
   exec '!rm .fill.tmp'
   exec 'edit!'
 endfunction
+
+nnoremap <S-Space> :!clear<CR>:call FillHoles('l')<CR>
