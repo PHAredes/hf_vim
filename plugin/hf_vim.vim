@@ -24,7 +24,7 @@ function! FillHoles(model)
       let l:tmpFile = expand('%:p') 
   endif
   call SaveVisibleLines('.fill.tmp')
-  exec '!NODE_NO_WARNINGS=1 holefill ' . l:tmpFile . ' .fill.tmp ' . a:model
+  exec '!NODE_NO_WARNINGS=1 holefill.mjs ' . l:tmpFile . ' .fill.tmp ' . a:model
   exec '!rm .fill.tmp'
   exec 'edit!'
 endfunction
