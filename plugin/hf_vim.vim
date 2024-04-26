@@ -15,7 +15,7 @@ function! SaveVisibleLines(dest)
   call writefile(l:visibleLines, a:dest)
 endfunction
 
-function! FillHoles(model)
+function! FillHoles()
   if (bufname('%') == '')
       let l:tmpFile = tempname()
       exec "w " . l:tmpFile
@@ -24,9 +24,9 @@ function! FillHoles(model)
       let l:tmpFile = expand('%:p') 
   endif
   call SaveVisibleLines('.fill.tmp')
-  exec '!NODE_NO_WARNINGS=1 holefill.mjs ' . l:tmpFile . ' .fill.tmp ' . a:model
+  exec '!NODE_NO_WARNINGS=1 holefill.mjs ' . l:tmpFile . ' .fill.tmp '
   exec '!rm .fill.tmp'
   exec 'edit!'
 endfunction
 
-nnoremap <S-Space> :!clear<CR>:call FillHoles('l')<CR>
+nnoremap <S-Space> :!clear<CR>:call FillHoles()<CR>
